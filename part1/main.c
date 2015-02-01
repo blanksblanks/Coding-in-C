@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "prime.h"
+#include "gcd.h"
 
 // error if main calls this method above its declaration
 // note: previous implicit declaration of ‘average’ was here
@@ -26,6 +27,11 @@ int main (int argc, char **argv){
     printf("The average of %d and %d is: %f\n", x, y, avg);
     printPrime(x);
     printPrime(y);
+    if (gcd(x, y) == 1) {
+        printf("They are relatively prime.");
+    } else {
+        printf("They are not relatively prime.");
+    }
 
     return 0;
 }
