@@ -1,7 +1,7 @@
 Name: Nina Baculinao
 Uni: nb2406
-Class: COMS W3157 Advanced Programming (Spring 2015)
 
+COMS W3157 Advanced Programming (Spring 2015)
 Lab# 1 Readme
 
 ***
