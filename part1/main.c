@@ -3,35 +3,32 @@
 #include "gcd.h"
 
 // error if main calls this method above its declaration
-// note: previous implicit declaration of ‘average’ was here
+// i.e. note: previous implicit declaration of ‘average’ was here
 double average(int a, int b){
     return (a + b) / 2.0;
 }
 
-void printPrime(int a){
-    if (prime(a) == 1){
-        printf("%d is prime\n", a);
-    } else {
-        printf("%d is not prime\n", a);
-    }
-}
-
 int main (int argc, char **argv){
+    // read in 2 integers from user
     int x, y;
-    printf("Feed me 2 positive integers, please:\n");
+    printf("Two positive integers, please:  ");
     scanf("%d%d", &x, &y);
-    printf("You typed in %d and %d\n", x, y);
+    printf("You typed in %d and %d.\n", x, y);
 
-    // calculate average
+    // return average
     double avg = average(x, y);
-    printf("The average of %d and %d is: %f\n", x, y, avg);
-    printPrime(x);
-    printPrime(y);
-    if (gcd(x, y) == 1) {
-        printf("They are relatively prime.");
-    } else {
-        printf("They are not relatively prime.");
-    }
+    printf("The average is: %f.\n", avg);
+
+    // check whether each number is prime
+    printf("%d is ", x);
+    if (prime(x) != 1) printf("not ");
+    printf("prime.\n%d is ", y);
+    if (prime(y) != 1) printf("not ");
+    printf("prime.\n");
+
+    // check whether two numbers are relatively prime
+    if (gcd(x, y) == 1) printf("They are relatively prime.\n");
+    else printf("They are not relatively prime.\n");
 
     return 0;
 }
