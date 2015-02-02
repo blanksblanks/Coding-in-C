@@ -47,6 +47,7 @@ NOTES
   statements. To convert a signed integer to binary, I check if x & (1 <<
   i), in other words if x and its i-th bit equal 1, and in that case print 1
   if it is, 0 if it is not, to reproduce x in binary form. I tested the code
-  to produce the same values Jae showed in the lab 1 assignment.
+  to produce the exact same values Jae showed in the lab 1 assignment --
+  same order, same strings, same spacing.
 
 
