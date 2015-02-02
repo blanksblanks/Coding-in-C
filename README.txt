@@ -6,6 +6,16 @@ Lab# 1 Readme
 
 ***
 
+NOTE: I accidentally included the binary file for the "convert" executable
+and "a.out" because they were missing from certain points from the
+".gitignore" file. It's interesting because even though "a.out" was supposed
+to eb ignored, git continued to track changes (perhaps because this file had
+already been added  changes were tracked until I committed when the file was
+deleted by the make clean instruction. I apologize for including binary code
+in the git log and will be more careful for the next assignment.
+
+***
+
 PART 1:
 
 HOW TO RUN
