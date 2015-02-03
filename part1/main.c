@@ -21,14 +21,18 @@ int main (int argc, char **argv){
 
     // check whether each number is prime
     printf("%d is ", x);
-    if (prime(x) != 1) printf("not ");
+    if (prime(x) != 1)
+        printf("not ");
     printf("prime.\n%d is ", y);
-    if (prime(y) != 1) printf("not ");
+    if (prime(y) != 1)
+        printf("not ");
     printf("prime.\n");
 
     // check whether two numbers are relatively prime
-    if (gcd(x, y) == 1) printf("They are relatively prime.\n");
-    else printf("They are not relatively prime.\n");
+    if (gcd(x, y) == 1)
+        printf("They are relatively prime.\n");
+    else
+        printf("They are not relatively prime.\n");
 
     return 0;
 }

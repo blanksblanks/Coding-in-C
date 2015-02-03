@@ -2,17 +2,16 @@
 
 int prime(int num) {
     int i;
-    if (num < 4 && num > 0) { // 1, 2, 3 are all prime
+    if (num < 4 && num > 0) // 1, 2, 3 are all prime
         return 1;
-    } else if (num % 2 == 0 || num % 3 == 0) { // easiest test
+    else if (num % 2 == 0 || num % 3 == 0) // easiest test
         return 0;
-    } else {
+    else {
         for (i = 5; i*i < num; i += 2) { // test all odds from 5 up
-            if (num % i == 0) {
+            if (num % i == 0)
                 return 0;
-            } else {
+            else
                 return 1;
-            }
         }
     }
     return 1;
