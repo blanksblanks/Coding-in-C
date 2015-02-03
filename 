@@ -1,0 +1,107 @@
+[1mdiff --git a/part1/gcd.c b/part1/gcd.c[m
+[1mindex 204c0b5..582aa71 100644[m
+[1m--- a/part1/gcd.c[m
+[1m+++ b/part1/gcd.c[m
+[36m@@ -2,12 +2,17 @@[m
+ [m
+ // use gcd to see if two numbers are relatively prime[m
+ int gcd(int a, int b) {[m
+[31m-    if (a == b) return 0;[m
+[32m+[m[32m    if (a == b)[m
+[32m+[m[32m        return 0;[m
+     while (a != b) {[m
+[31m-        if (a > b) a = a - b;[m
+[31m-        else b = b - a;[m
+[32m+[m[32m        if (a > b)[m
+[32m+[m[32m            a = a - b;[m
+[32m+[m[32m        else[m
+[32m+[m[32m            b = b - a;[m
+     }[m
+     // a is the gcd[m
+[31m-    if (a == 1) return 1;[m
+[31m-    else return 0;[m
+[32m+[m[32m    if (a == 1)[m
+[32m+[m[32m        return 1;[m
+[32m+[m[32m    else[m
+[32m+[m[32m        return 0;[m
+ }[m
+[1mdiff --git a/part1/main.c b/part1/main.c[m
+[1mindex 20e0f6f..15a78c0 100644[m
+[1m--- a/part1/main.c[m
+[1m+++ b/part1/main.c[m
+[36m@@ -21,14 +21,18 @@[m [mint main (int argc, char **argv){[m
+ [m
+     // check whether each number is prime[m
+     printf("%d is ", x);[m
+[31m-    if (prime(x) != 1) printf("not ");[m
+[32m+[m[32m    if (prime(x) != 1)[m
+[32m+[m[32m        printf("not ");[m
+     printf("prime.\n%d is ", y);[m
+[31m-    if (prime(y) != 1) printf("not ");[m
+[32m+[m[32m    if (prime(y) != 1)[m
+[32m+[m[32m        printf("not ");[m
+     printf("prime.\n");[m
+ [m
+     // check whether two numbers are relatively prime[m
+[31m-    if (gcd(x, y) == 1) printf("They are relatively prime.\n");[m
+[31m-    else printf("They are not relatively prime.\n");[m
+[32m+[m[32m    if (gcd(x, y) == 1)[m
+[32m+[m[32m        printf("They are relatively prime.\n");[m
+[32m+[m[32m    else[m
+[32m+[m[32m        printf("They are not relatively prime.\n");[m
+ [m
+     return 0;[m
+ }[m
+[1mdiff --git a/part1/prime.c b/part1/prime.c[m
+[1mindex 106f981..6fb4780 100644[m
+[1m--- a/part1/prime.c[m
+[1m+++ b/part1/prime.c[m
+[36m@@ -2,17 +2,16 @@[m
+ [m
+ int prime(int num) {[m
+     int i;[m
+[31m-    if (num < 4 && num > 0) { // 1, 2, 3 are all prime[m
+[32m+[m[32m    if (num < 4 && num > 0) // 1, 2, 3 are all prime[m
+         return 1;[m
+[31m-    } else if (num % 2 == 0 || num % 3 == 0) { // easiest test[m
+[32m+[m[32m    else if (num % 2 == 0 || num % 3 == 0) // easiest test[m
+         return 0;[m
+[31m-    } else {[m
+[32m+[m[32m    else {[m
+         for (i = 5; i*i < num; i += 2) { // test all odds from 5 up[m
+[31m-            if (num % i == 0) {[m
+[32m+[m[32m            if (num % i == 0)[m
+                 return 0;[m
+[31m-            } else {[m
+[32m+[m[32m            else[m
+                 return 1;[m
+[31m-            }[m
+         }[m
+     }[m
+     return 1;[m
+[1mdiff --git a/part2/convert.c b/part2/convert.c[m
+[1mindex 2de7a99..d5597fa 100644[m
+[1m--- a/part2/convert.c[m
+[1m+++ b/part2/convert.c[m
+[36m@@ -3,18 +3,19 @@[m
+ int main(){[m
+     int x;[m
+     scanf("%d", &x);[m
+[31m-    [m
+     printf("signed dec:\t%d\n", x);[m
+     printf("unsigned dec:\t%u\n", x);[m
+     printf("hex:\t\t%x\n", x);[m
+     printf("binary:\t\t");[m
+[32m+[m
+     int i;[m
+     // traverse all the bits in the int[m
+     // sizeof gives # of bytes of storage[m
+     for (i = sizeof(int) * 8 - 1; i >= 0; i--) {[m
+         // check if x has bit[i] set to 1[m
+         (x & (1 << i) ) ? printf("1") : printf("0");[m
+[31m-        if (i % 4 == 0) printf(" "); // space every 4 digits[m
+[32m+[m[32m        if (i % 4 == 0)[m
+[32m+[m[32m            printf(" "); // add space every 4 digits[m
+     }[m
+     printf("\n");[m
+ [m
