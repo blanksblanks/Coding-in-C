@@ -2,6 +2,8 @@
 
 // use gcd to see if two numbers are relatively prime
 int gcd(int a, int b) {
+    if (a == 0 || b == 0)
+        return 0;
     if (a == b)
         return 0;
     while (a != b) {
