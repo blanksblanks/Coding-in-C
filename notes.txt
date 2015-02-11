@@ -1,0 +1,26 @@
+/home/w3157/submit/submit-lab  labN
+- don't forget to add # at the end i.e.  /home/w3157/submit/submit-lab lab1
+- performs 4 steps: 
+  (1) It creates a patch file named YOUR_UNI-labN.mbox.
+  (2) It makes a new clone of the skeleton code into labN-CURRENT_TIME
+      directory, and applies your patch into that directory to recreate
+      all your work.
+  (3) It then copies your patch file into the class
+      submission directory.
+  (4) Lastly, it emails the patch file to the class Gmail account.
+
+git push upstream master
+- to push to remote repo
+
+git remote add origin https://github.com/blanksblanks/... 
+- to add remote
+- note that from CLIC i can only access my remote with
+https://github.com/blanksblanks/blahblablblah
+instead of ssh with git@github.com:blanksblanks/etc
+
+git remote rm origin
+git config --get remote.origin.url
+git remote show origin
+
+
+history | grep 'phrase'

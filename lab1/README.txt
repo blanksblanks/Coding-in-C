@@ -6,12 +6,12 @@ Lab# 1 Readme
 
 ***
 
-NOTE: I accidentally included the binary file for the "convert" executable
-and "a.out" because they were missing from certain points from the
-".gitignore" file. It's interesting because even though "a.out" was supposed
-to eb ignored, git continued to track changes (perhaps because this file had
+NOTE ON GIT COMMITS: I accidentally included the binary file for the
+"convert" executable and "a.out" at some point because they were missing
+from ".gitignore". It's interesting because even though "a.out" was supposed
+to be ignored, git continued to track changes (perhaps because this file had
 already been added  changes were tracked until I committed when the file was
-deleted by the make clean instruction. I apologize for including binary code
+deleted by the make clean instruction). I apologize for including binary code
 in the git log and will be more careful for the next assignment.
 
 ***
@@ -43,7 +43,7 @@ NOTES
 
 PART 2:
 
-hOW TO RUN
+HOW TO RUN
   1. Enter the "Lab 1/Part 2" directory and run the command:
     $ make
   2. Run the file:
@@ -51,8 +51,8 @@ hOW TO RUN
 
 NOTES
   My code works exactly as specified in the lab. It reads 1 signed integer
-  from the user, and prints the numebr in 4 different ways: a signed
-  decimal, unsigned decimal, hexadecima, and binary. Jae provided us with
+  from the user, and prints the number in 4 different ways: a signed
+  decimal, unsigned decimal, hexadecimal, and binary. Jae provided us with
   the string format specifiers to accomplish the first three print
   statements. To convert a signed integer to binary, I check if x & (1 <<
   i), in other words if x and its i-th bit equal 1, and in that case print 1

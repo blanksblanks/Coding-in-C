@@ -1,0 +1,80 @@
+#!/bin/bash
+
+# quit if any command fails
+set -e
+
+# make sure "labN" is passed in
+if [ -z "$1" ] ; then
+    echo "ERR: usage: submit-lab labN"
+    exit 1
+fi
+
+# Are we accepting lab? How many late days will it cost?
+SUBMITDIR=/home/w3157/submit
+$SUBMITDIR/confirm $1
+if [[ $? != 0 ]] ; then
+    exit $?
+fi
+
+# are you sure?
+UNI=`whoami`
+echo -e  "\nLet's make sure a few things before we submit:\n"
+echo     "  - Are you in ~/cs3157/$1 directory?"
+echo     "  - Have you committed all your changes?"
+echo -e  "\nIf not, please press Ctrl-C to quit."
+echo -ne "\nPress ENTER to continue with submission: "
+read
+
+# start submission
+FMT_TIMESTAMP=`date '+%F %H:%M:%S'`
+TIMESTAMP=`date '+%F-%H%M%S'`
+echo -e  "\nStarting 6 steps of lab submission at $FMT_TIMESTAMP: "
+
+# (1) create patch
+echo -e  "[1] Creating patch file: "
+MBOXFILE=$UNI-$1.mbox
+echo -e  "Creating $MBOXFILE ... "
+git format-patch --stdout origin > $MBOXFILE
+echo -e  "Done."
+
+# (2) test patch
+echo -e  "[2] Testing your patch: "
+git clone /home/jae/cs3157-pub/$1 $1-$TIMESTAMP
+cd $1-$TIMESTAMP
+git am --whitespace=nowarn ../$MBOXFILE
+cd ..
+echo -e  "Done."
+
+# (3) submit patch
+echo -e  "[3] Submitting your patch: "
+echo -e  "Copying your patch into $SUBMITDIR/$1/ ... "
+umask 0137
+cp $MBOXFILE $SUBMITDIR/$1/$MBOXFILE 
+chmod 640 $SUBMITDIR/$1/$MBOXFILE 
+ls -l $SUBMITDIR/$1/$MBOXFILE
+echo -e  "Done."
+
+# (4) mail patch 
+echo -e  "[4] Mailing your patch as a backup: "
+echo -e  "Mailing your patch to cs3157@gmail.com and $UNI@columbia.edu ... "
+echo -e "$MBOXFILE was submitted at $FMT_TIMESTAMP.\n" | mutt \
+    -s $MBOXFILE    \
+    -a $MBOXFILE -- \
+    "cs3157@gmail.com" \
+    "$UNI@columbia.edu"
+#    "$UNI@lionmailmx.cc.columbia.edu"
+echo -e  "Done."
+
+# (5) generate sha hash for patch
+echo -e "[5] Generating sha hash for patch: "
+SHAKEY=`openssl dgst -sha1 $SUBMITDIR/$1/$MBOXFILE | sed 's/^.* //'`
+echo -e "Done."
+
+# (6) register lab and update late days
+echo -e "[6] Registering lab and updating late days: "
+$SUBMITDIR/register $1 $SHAKEY
+echo -e "Done."
+
+# success!
+echo "SUCCESS!"
+echo "Please verify that \"$1-$TIMESTAMP\" directory contains all your work."
