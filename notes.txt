@@ -1,3 +1,8 @@
+alias for submission = labNsubmit 
+
+homework instructions:
+git clone /home/jae/cs3157-pub/labN labN
+
 /home/w3157/submit/submit-lab  labN
 - don't forget to add # at the end i.e.  /home/w3157/submit/submit-lab lab1
 - performs 4 steps: 
@@ -8,6 +13,10 @@
   (3) It then copies your patch file into the class
       submission directory.
   (4) Lastly, it emails the patch file to the class Gmail account.
+
+gedit
+nautilus &
+
 
 git push upstream master
 - to push to remote repo
@@ -21,6 +30,5 @@ instead of ssh with git@github.com:blanksblanks/etc
 git remote rm origin
 git config --get remote.origin.url
 git remote show origin
-
 
 history | grep 'phrase'
