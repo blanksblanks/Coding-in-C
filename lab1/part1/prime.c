@@ -7,7 +7,7 @@ int prime(int num) {
     else if (num % 2 == 0 || num % 3 == 0) // easiest test
         return 0;
     else {
-        for (i = 5; i*i < num; i += 2) { // test all odds from 5 up
+        for (i = 5; i*i <= num; i += 2) { // test all odds from 5 up
             if (num % i == 0)
                 return 0;
             else
