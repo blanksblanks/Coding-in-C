@@ -14,7 +14,11 @@ LDFLAGS = -g -L../part1
 LDLIBS = -lmylist
 
 # TODO: ask if there is a difference between LFLAGS and LDFLAGS, LDLIBS and LIBS?
-# And is this equivalent to gcc -g -Wall -L../part1 -lmylist?
+
+# Equivalent to:
+# gcc -g -Wall -I ../part1   -c -o revecho.o revecho.c
+# gcc -g -L../part1  revecho.o  -lmylist -o revecho
+
 revecho: revecho.o
 
 revecho.o: revecho.c
