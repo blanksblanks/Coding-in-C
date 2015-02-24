@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "mylist.h"
 
+// TODO: make sure all methods declared in header file are implemented here
+// TODO: use isEmptyList static method defined in .h instead of checking list->head here
+// TODO: return NULL instead of handling malloc perror here since mylist-test die func handles that?
+
+
 // 1: make a new node to store *data,  a pointer to some variable the user has
 // 2: set next of this new node appropriately
 // 3: set the head of the list to this node
