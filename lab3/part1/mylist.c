@@ -63,6 +63,14 @@ void *popFront(struct List *list) {
     return data;
 }
 
+// remove all nodes, using popFront method
+void removeAllNodes(struct List *list) {
+    struct Node *p = list->head;
+    while (p != NULL) {
+        p = popFront(list);
+    }
+}
+
 // if prevnode is null, func should behave like addfront
 // assume prevnode to be in the list, add new node containing data after prevnode
 // use same ideas findNode: go through list until you find match
