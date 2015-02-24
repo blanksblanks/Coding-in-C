@@ -6,7 +6,26 @@ Lab #3 Readme
 
 ***
 
+mylist-test tests the following functions in mylist:
+- addFront
+- traverseList
+- flipSignDouble
+- compareDouble
+- findNode
+- popFront
+- addAfter
+- reverseList
+
+all work in accordance with lab specs.
+
 ***
+
+revecho uses the linked list library created by mylist in part 1 to print
+out command line arguments in reverse order and find the matching string
+'dude'. there was a slight hiccup during the creation of the Makefile
+because the library had been named mylist-lib.a instead of following the
+naming conventions of libmylist.a, so gcc was initially unable to find the
+library. everything should work now.
 
 ***
 
