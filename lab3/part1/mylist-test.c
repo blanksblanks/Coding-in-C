@@ -36,7 +36,7 @@ int main()
     }
     traverseList(&list, &printDouble);
     printf("\n");
-/*
+
     // test flipSignDouble()
     printf("testing flipSignDouble(): ");
     traverseList(&list, &flipSignDouble);
@@ -76,7 +76,7 @@ int main()
     }
     traverseList(&list, &printDouble);
     printf("\n");
-
+    
     // test reverseList()
     while ((data = popFront(&list)) != NULL) {
 	printf("popped %.1f, and reversed the rest: [ ", *(double *)data);
@@ -84,6 +84,6 @@ int main()
 	traverseList(&list, &printDouble);
 	printf("]\n");
     }
-*/
+
     return 0;
 }
