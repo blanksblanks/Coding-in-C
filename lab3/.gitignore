@@ -4,5 +4,6 @@
 main
 mylist
 mylist-test
+revecho
 *.mbox
 /lab1-2015*
