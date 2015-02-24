@@ -4,21 +4,30 @@ LDFLAGS = -g
 
 # the targets you build are: executable, .a, .o files
 
-# your test program, mylist-test, must link with the lib file
-# not the mylist.o file
+# executable file - your test program must link with lib not .o file
 mylist-test: libmylist.a
 
+# .a library file
 libmylist.a: mylist.o
+	ar rc $@ mylist.o
+	ranlib $@
 
-# TODO: ask?  when you link .o files and .a files together
+# ar: create modify and extract from archives
+# generate index to archive, equivalent to ar -s
+# $@: $(OBJECTS) maps back to the $(TARGET) mylist-lib.a
+# "put the target for this Makefile source here and all the objects after that"
+
+# note: when you link .o files and .a files together
 # .a files must come after .o files in gcc command line
+# here it is recursively called
 
-mylist-test.o: mylist.h
-mylist.o: mylist.h
+# .o files
+mylist-test.o: mylist-test.c mylist.h
+mylist.o: mylist.c mylist.h
 
 .PHONY: clean	
 clean:
-	rm -f *.o *~ a.out libmylist.a mylist-test
+	rm -f *.o *~ a.out core mylist-test mylist-lib.a
 
 .PHONY: all
-clean: clean libmlist.a mylist-test
+all: clean mylist-test mylist-lib.a
