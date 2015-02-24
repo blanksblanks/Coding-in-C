@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
         addFront(&list, argv[i]); // call on all strings, adding next to front
     traverseList(&list, &printString); // traverse list and print strings
 
+    removeAllNodes(&list);
     return 0;
 
 }
