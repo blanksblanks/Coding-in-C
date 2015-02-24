@@ -49,3 +49,27 @@ popped 5.0, and reversed the rest: [ ]
 ==31126== 
 ==31126== For counts of detected and suppressed errors, rerun with: -v
 ==31126== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
+
+***
+Valgrind output for revecho:
+
+==16571== Memcheck, a memory error detector
+==16571== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==16571== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==16571== Command: ./revecho reverse my words dude
+==16571== 
+dude
+words
+my
+reverse
+
+dude found
+==16571== 
+==16571== HEAP SUMMARY:
+==16571==     in use at exit: 0 bytes in 0 blocks
+==16571==   total heap usage: 4 allocs, 4 frees, 64 bytes allocated
+==16571== 
+==16571== All heap blocks were freed -- no leaks are possible
+==16571== 
+==16571== For counts of detected and suppressed errors, rerun with: -v
+==16571== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
