@@ -27,7 +27,7 @@ mylist.o: mylist.c mylist.h
 
 .PHONY: clean	
 clean:
-	rm -f *.o *~ a.out core mylist-test mylist-lib.a
+	rm -f *.o *~ a.out core mylist-test libmylist.a
 
 .PHONY: all
 all: clean mylist-test mylist-lib.a
