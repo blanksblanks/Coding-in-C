@@ -1,10 +1,12 @@
-Tme: Nina Baculinao
+Name: Nina Baculinao
 Uni: nb2406
 
 COMS W3157 Advanced Programming (Spring 2015)
 Lab #3 Readme
 
 ***
+
+mylist.c comments:
 
 mylist-test tests the following functions in mylist:
 - addFront
@@ -16,9 +18,34 @@ mylist-test tests the following functions in mylist:
 - addAfter
 - reverseList
 
-all work in accordance with lab specs.
+All work in accordance with lab specs.
+
+Initially, I forgot to implement a removeAllNodes function because it was
+not tested in "mylist-test.c" and I had followed the suggestions of
+sequentially implementing the functions specified in test. However, while
+looking over "mylist.h", I noticed this method was declared, so I
+implemented it, tested it in revecho.c since I wasn't sure if we were
+allowed to modify the skeleton test. Then I went back again and made sure
+all methods declared in the header file were being implemented in the .c
+file. I noticed during this second check that there was a isEmptyList static
+method defined in the .h, so I changed all the equivalent instances of
+"if (list->head == NULL) " to "if (!isEmptyList(list)" to make use of that
+method.
+
+Another thing I noticed was that "mylist-test.c" contains a die function
+that prints an error to console and exits the system. This would be done if
+certain variables returned NULL, and seemed to be there as a way of handling
+malloc errors. I considered returning NULL if my newly malloc'd variable was
+NULL, but since we were taught to always immediately check if malloc
+returned a null variable immediately after calling malloc, eventually I
+decided to keep the malloc and perror handling in "mylist.c", since I can't
+be assured there will always exist a die function checking for return of
+null values in the classes calling "mylist" library. I hope that makes
+sense.
 
 ***
+
+revecho.c comments:
 
 revecho uses the linked list library created by mylist in part 1 to print
 out command line arguments in reverse order and find the matching string
