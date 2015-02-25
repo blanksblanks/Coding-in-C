@@ -2,11 +2,6 @@
 #include <stdlib.h>
 #include "mylist.h"
 
-// TODO: make sure all methods declared in header file are implemented here
-// TODO: use isEmptyList static method defined in .h instead of checking list->head here
-// TODO: return NULL instead of handling malloc perror here since mylist-test die func handles that?
-
-
 // 1: make a new node to store *data,  a pointer to some variable the user has
 // 2: set next of this new node appropriately
 // 3: set the head of the list to this node
@@ -14,7 +9,7 @@ struct Node *addFront(struct List *list, void *data) {
     struct Node *p = (struct Node *)malloc(sizeof(struct Node));
     if (p == NULL) {
         perror("malloc returned NULL");
-        exit(1); // Q: is this always called perror?
+        exit(1);
     }
 
     p->data = data; // 1 data should point at data
@@ -23,7 +18,7 @@ struct Node *addFront(struct List *list, void *data) {
     return p;
 }
 
-// visit each node in the list and call f on data as we visit each node
+// visit each node in the list and call pointer func f on data as we visit each node
 void traverseList(struct List *list, void (*f)(void *)) {
     struct Node *p = list->head; // start at head
     while (p != NULL) { // keep going until next node is null
@@ -39,13 +34,14 @@ void flipSignDouble(void *data) {
     // data = *(void *)data_double;
 }
 
-// just cast, dereference and compare - return 0 if equal, 1 otherwise
+// just cast, dereference and compare; return 0 if equal, 1 otherwise
 int compareDouble(const void *data1, const void *data2) {
     if (*(double *)data1 == *(double *)data2)
         return 0;
     return 1;
 }
 
+// find node using pointer func compar; return null if not found
 struct Node *findNode(struct List *list, const void *dataSought, int (*compar)(const void*, const void*)) {
     struct Node *p = list->head;
     while (p != NULL) {
@@ -60,7 +56,8 @@ struct Node *findNode(struct List *list, const void *dataSought, int (*compar)(c
 // change the head of the list to the next node
 // unallocate the old head and return its data
 void *popFront(struct List *list) {
-    if (list->head == NULL) return NULL;
+    if (isEmptyList(list)) // equivalent to if (list->head == NULL)
+        return NULL;
     struct Node *ex = list->head;
     list->head = ex->next;
     void *data = ex->data;
@@ -87,7 +84,7 @@ struct Node *addAfter(struct List *list, struct Node *prevNode, void *data) {
         exit(1);
     }
     p->data = data;
-    if (list->head == NULL) { 
+    if (isEmptyList(list)) {
         p->next = NULL;
         list->head = p; // forgot this for a bit, hehe, so nothing was getting added to list
     } else {
