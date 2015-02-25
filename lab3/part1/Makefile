@@ -30,4 +30,6 @@ clean:
 	rm -f *.o *~ a.out core mylist-test libmylist.a
 
 .PHONY: all
-all: clean mylist-test mylist-lib.a
+all: clean mylist-test
+
+# libmylist.a recursively needed, so no need to specify ^
