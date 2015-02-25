@@ -6,4 +6,4 @@ mylist
 mylist-test
 revecho
 *.mbox
-/lab3-2015*
+/lab[0-9]-2015*
