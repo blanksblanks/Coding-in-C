@@ -7,10 +7,8 @@
 // 3: set the head of the list to this node
 struct Node *addFront(struct List *list, void *data) {
     struct Node *p = (struct Node *)malloc(sizeof(struct Node));
-    if (p == NULL) {
-        perror("malloc returned NULL");
-        exit(1);
-    }
+    if (p == NULL)
+        return NULL;
 
     p->data = data; // 1 data should point at data
     p->next = list->head; // 2 next should be current head
@@ -79,10 +77,8 @@ void removeAllNodes(struct List *list) {
 // reroute some next pointers to 'insert' node you just made into list
 struct Node *addAfter(struct List *list, struct Node *prevNode, void *data) {
     struct Node *p = (struct Node *)malloc(sizeof(struct Node));
-    if (p == NULL) {
-        perror("malloc returned NULL");
-        exit(1);
-    }
+    if (p == NULL)
+        return NULL;
     p->data = data;
     if (isEmptyList(list)) {
         p->next = NULL;
