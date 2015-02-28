@@ -1,7 +1,30 @@
-a.out
+# ignore object and library binaries
+.out
 *.o
 *.a
 main
+
+# ignore lab-specific executables
 convert
+isort
+twecho
+mylist-test
+mylist
+revecho
+mdb-cs3157
+mdb-add-cs3157
+mdb-lookup-cs3157
+mdb-lookup
+mdb-add
+mymdb
+
+# ignore mailbox files and test submissions
 *.mbox
-/lab1-2015*
+/lab[0-9]-2015*
+
+# ignore Vim and Emacs swap files
+*.swp
+*~
+.project
+# .DS_Store (apple)
+
