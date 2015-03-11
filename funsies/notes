@@ -1,0 +1,4 @@
+gcc -g -Wall -c main.c
+gcc -g main.o -o main
+
+-g -Wall ptr.c -o ptr
