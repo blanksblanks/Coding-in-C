@@ -17,6 +17,8 @@ mdb-lookup-cs3157
 mdb-lookup
 mdb-add
 mymdb
+funsies/ptr
+funsies/testing
 
 # ignore mailbox files and test submissions
 *.mbox
@@ -27,4 +29,3 @@ mymdb
 *~
 .project
 # .DS_Store (apple)
-
