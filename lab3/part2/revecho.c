@@ -8,6 +8,13 @@ static void printString(void *p) {
     // if I add another * in front it complains I'm passing an int - why?
 }
 
+static void die(const char *message) {
+    perror(message);
+    exit(1); 
+}
+
+
+
 int main(int argc, char **argv) {
 
     // initialize list
@@ -16,8 +23,10 @@ int main(int argc, char **argv) {
     
     // pass arg strings into list without duplicating them
     int i;
-    for (i = 1; i < argc; i++)
-        addFront(&list, argv[i]); // call on all strings, adding next to front
+    for (i = 1; i < argc; i++) {
+        if (addFront(&list, argv[i]) == NULL) // call on all strings, adding next to front
+            die("addFront() failed");
+    }
     traverseList(&list, &printString); // traverse list and print strings
 
     struct Node *node;

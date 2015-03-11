@@ -32,6 +32,13 @@ method defined in the .h, so I changed all the equivalent instances of
 "if (list->head == NULL) " to "if (!isEmptyList(list)" to make use of that
 method.
 
+EDIT: disregard the next paragraph. I ended up changing my addFront and
+addAfter methods to return NULL upon malloc failure, to follow the header
+specs, and after Michael explained that this makes the library more flexible for
+the users - maybe the don't want immediate system exit upon malloc failure!
+I updated revecho.c accordingly to check for NULL returns of addFront and
+call the die method with the appropriate perror message and exit if so.
+
 Another thing I noticed was that "mylist-test.c" contains a die function
 that prints an error to console and exits the system. This would be done if
 certain variables returned NULL, and seemed to be there as a way of handling
