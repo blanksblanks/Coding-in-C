@@ -3,6 +3,12 @@ alias for submission = labNsubmit
 homework instructions:
 git clone /home/jae/cs3157-pub/labN labN
 
+git log --pretty=format:"%h - %an, %ar : %s"
+git log --pretty=format:"%h - %s"
+git log --pretty=format:"%h %s" --graph
+
+./program >> README.txt 2>&1
+
 /home/w3157/submit/submit-lab  labN
 - don't forget to add # at the end i.e.  /home/w3157/submit/submit-lab lab1
 - performs 4 steps: 
@@ -21,11 +27,15 @@ nautilus &
 git push upstream master
 - to push to remote repo
 
-git remote add origin https://github.com/blanksblanks/... 
+git remote add upstream https://github.com/blanksblanks/REPONAME.git
 - to add remote
 - note that from CLIC i can only access my remote with
 https://github.com/blanksblanks/blahblablblah
 instead of ssh with git@github.com:blanksblanks/etc
+
+git remote add bucket
+https://blanksblanks@bitbucket.org/blanksblanks/REPONAME.git
+git push -u bucket --all
 
 git remote rm origin
 git config --get remote.origin.url

@@ -1,0 +1,6 @@
+prints all mdb records
+removes record numbers
+new format appears to be:
+{name}{msg}
+
+
